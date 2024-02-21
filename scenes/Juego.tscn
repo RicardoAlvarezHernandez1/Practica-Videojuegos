@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbfv5kr1eul15"]
+
+[ext_resource type="Texture2D" uid="uid://b14nonsg2ip3e" path="res://assets/sprites/caveBackground.webp" id="1_3p81p"]
+[ext_resource type="PackedScene" uid="uid://bu2linxj0iqhb" path="res://scenes/Jugador.tscn" id="2_gg023"]
+[ext_resource type="PackedScene" uid="uid://dyve06irxd8mv" path="res://scenes/muro.tscn" id="3_ynlvm"]
+
+[node name="Juego" type="Node2D"]
+position = Vector2(577, 328)
+scale = Vector2(1.1875, 1.1144)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3p81p")
+
+[node name="Jugador" parent="." instance=ExtResource("2_gg023")]
+position = Vector2(-158, 181)
+scale = Vector2(0.250292, 0.171331)
+
+[node name="Muro" parent="." instance=ExtResource("3_ynlvm")]
+position = Vector2(-192, 233)
+scale = Vector2(0.184267, 0.0787471)

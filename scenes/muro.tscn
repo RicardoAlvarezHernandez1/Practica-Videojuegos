@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyve06irxd8mv"]
+
+[ext_resource type="Texture2D" uid="uid://q0jck145bf2g" path="res://assets/sprites/murooscuro.jpeg" id="1_n8055"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7h0kj"]
+size = Vector2(1920.5, 639)
+
+[node name="Muro" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n8055")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(640, 0)
+texture = ExtResource("1_n8055")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1280, 0)
+texture = ExtResource("1_n8055")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(642.75, -1)
+shape = SubResource("RectangleShape2D_7h0kj")
