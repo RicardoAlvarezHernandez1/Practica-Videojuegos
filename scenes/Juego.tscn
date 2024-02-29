@@ -1,13 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbfv5kr1eul15"]
 
-[ext_resource type="Texture2D" uid="uid://b14nonsg2ip3e" path="res://assets/sprites/caveBackground.webp" id="1_3p81p"]
+[ext_resource type="PackedScene" uid="uid://cu1o63hhakcfr" path="res://scenes/mapa.tscn" id="2_4e51p"]
 [ext_resource type="PackedScene" uid="uid://bu2linxj0iqhb" path="res://scenes/Jugador.tscn" id="2_gg023"]
 
 [node name="Juego" type="Node2D"]
 position = Vector2(577, 328)
 scale = Vector2(1.1875, 1.1144)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3p81p")
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_gg023")]
+top_level = true
+position = Vector2(538, 331)
+scale = Vector2(0.530956, 0.477881)
+
+[node name="Node2D" parent="." instance=ExtResource("2_4e51p")]

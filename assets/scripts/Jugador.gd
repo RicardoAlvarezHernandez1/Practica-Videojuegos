@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 500
+var speed = 250
 
 var atacking = false
 var current_dir = ""
