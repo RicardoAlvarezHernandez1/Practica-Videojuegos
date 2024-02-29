@@ -1,9 +1,12 @@
-[gd_scene load_steps=41 format=3 uid="uid://bu2linxj0iqhb"]
+[gd_scene load_steps=47 format=3 uid="uid://bu2linxj0iqhb"]
 
 [ext_resource type="Script" path="res://assets/scripts/Jugador.gd" id="1_4ouik"]
 [ext_resource type="Texture2D" uid="uid://c4xjn562t2k31" path="res://assets/sprites/player.png" id="2_m0bb1"]
+[ext_resource type="Texture2D" uid="uid://q016pfs8aijh" path="res://assets/sprites/armored_heart_8x8.png" id="3_sckqp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4smyd"]
+radius = 6.52295
+height = 17.2726
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7skf"]
 atlas = ExtResource("2_m0bb1")
@@ -52,6 +55,18 @@ region = Rect2(96, 384, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ww242"]
 atlas = ExtResource("2_m0bb1")
 region = Rect2(144, 384, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdbv0"]
+atlas = ExtResource("2_m0bb1")
+region = Rect2(0, 432, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmax3"]
+atlas = ExtResource("2_m0bb1")
+region = Rect2(48, 432, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eefjp"]
+atlas = ExtResource("2_m0bb1")
+region = Rect2(96, 432, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfxsm"]
 atlas = ExtResource("2_m0bb1")
@@ -202,6 +217,25 @@ animations = [{
 "name": &"Atack_Top",
 "speed": 10.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdbv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmax3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eefjp")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kfxsm")
@@ -295,23 +329,60 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyetx"]
+size = Vector2(8.1657, 6.21132)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e84qd"]
+bg_color = Color(0.937255, 0.117647, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Jugador"]]
 script = ExtResource("1_4ouik")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 22)
+scale = Vector2(2.29957, 2.31581)
 shape = SubResource("CapsuleShape2D_4smyd")
 
 [node name="JugadorAnimado" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 2)
+position = Vector2(2.84217e-14, 1.42109e-14)
 scale = Vector2(2.66667, 2.4375)
 sprite_frames = SubResource("SpriteFrames_si6f6")
-animation = &"Atack"
-frame = 3
-frame_progress = 1.0
+animation = &"Atack_Top"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
-limit_left = -639
-limit_top = -528
-limit_right = 1717
-limit_bottom = 1397
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(56.0415, 24.1008)
+rotation = 3.13443
+scale = Vector2(9.05206, -8.33264)
+shape = SubResource("RectangleShape2D_iyetx")
+disabled = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -367.0
+offset_top = -247.0
+offset_right = -119.0
+offset_bottom = -220.0
+theme_override_colors/font_color = Color(0, 0.596078, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_e84qd")
+value = 100.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-399, -233)
+scale = Vector2(4.45, 3.76136)
+texture = ExtResource("3_sckqp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbfv5kr1eul15"]
+[gd_scene load_steps=4 format=3 uid="uid://cbfv5kr1eul15"]
 
-[ext_resource type="PackedScene" uid="uid://cu1o63hhakcfr" path="res://scenes/mapa.tscn" id="2_4e51p"]
+[ext_resource type="PackedScene" path="res://scenes/mapa.tscn" id="2_4e51p"]
 [ext_resource type="PackedScene" uid="uid://bu2linxj0iqhb" path="res://scenes/Jugador.tscn" id="2_gg023"]
+[ext_resource type="PackedScene" uid="uid://dvjnt6trven5b" path="res://scenes/DefaultEnemy.tscn" id="3_mmup6"]
 
 [node name="Juego" type="Node2D"]
 position = Vector2(577, 328)
 scale = Vector2(1.1875, 1.1144)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_gg023")]
-top_level = true
-position = Vector2(538, 331)
-scale = Vector2(0.530956, 0.477881)
+[node name="Node2D2" parent="." instance=ExtResource("2_4e51p")]
 
-[node name="Node2D" parent="." instance=ExtResource("2_4e51p")]
+[node name="DefaultEnemy" parent="Node2D2" instance=ExtResource("3_mmup6")]
+position = Vector2(-548.21, -212.67)
+scale = Vector2(1.1449, 1.10423)
+
+[node name="CharacterBody2D" parent="Node2D2" instance=ExtResource("2_gg023")]
+position = Vector2(-36.2105, -9.87078)
+scale = Vector2(0.599375, 0.6169)
