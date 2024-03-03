@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://fj8ygxmiglay"]
+[gd_scene load_steps=67 format=3 uid="uid://dvjnt6trven5b"]
 
 [ext_resource type="Script" path="res://assets/scripts/DefaultEnemy.gd" id="1_jefiu"]
 [ext_resource type="Texture2D" uid="uid://d30a7eb4u3ltb" path="res://assets/sprites/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="2_huj84"]
@@ -475,6 +475,7 @@ slide_on_ceiling = false
 script = ExtResource("1_jefiu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.19944, 1.07895)
 sprite_frames = SubResource("SpriteFrames_on5gg")
 animation = &"Damage"
 frame = 4
@@ -485,11 +486,12 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2, 44)
 rotation = 3.14159
-scale = Vector2(1.75966, -1.64529)
+scale = Vector2(2.61938, -1.94444)
 shape = SubResource("CapsuleShape2D_0cejt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 44)
+position = Vector2(3, 52)
+scale = Vector2(1.13216, -1.02029)
 shape = SubResource("RectangleShape2D_7o4bc")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]

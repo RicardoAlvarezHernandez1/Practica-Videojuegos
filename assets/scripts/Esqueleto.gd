@@ -1,15 +1,18 @@
 extends CharacterBody2D
-class_name DefaultEnemy
+class_name Esqueleto
 
-var speed = 190
+var speed = 150
 
 var player = null
 var running = true;
-var playerLivesTillDead = 1
+var playerLivesTillDead = 10
 var BossHp = 100
+var isAlive = true
+
 
 func _ready():
 	player = get_tree().get_nodes_in_group("Jugador")[0]
+
 	
 func  _physics_process(delta):
 	
@@ -21,54 +24,54 @@ func follow():
 		
 		if running == true :
 			velocity = position.direction_to(player.position) * speed
-			if velocity.x > 0 :
+			if velocity.x < 0 :
 				$AnimatedSprite2D.flip_h = true
 				$AnimatedSprite2D.play("Run")
-			elif velocity.x < 0:
+			elif velocity.x > 0:
 				$AnimatedSprite2D.flip_h = false
 				$AnimatedSprite2D.play("Run")
 			move_and_slide()
 
+func getIsAlive():
+	return isAlive
 
 func dead(): 
 	running = false
-	$AnimatedSprite2D.play("Monster_Dead")
+	isAlive = false
+	$AnimatedSprite2D.play("Dead")
 	await ($AnimatedSprite2D.animation_finished)
-	get_tree().change_scene_to_file("res://scenes/YouWin.tscn")
 	queue_free()
 	
 	
 
 
 func damageReceived():
-	BossHp = BossHp - 10
 	running = false
-	$ProgressBar.set_value(BossHp)
-	$AnimatedSprite2D.play("Damage")
+	$AnimatedSprite2D.play("TakeDamage")
 	await ($AnimatedSprite2D.animation_finished)
 	running = true
 	
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Jugador"):
-		if playerLivesTillDead > 0:
-			playerLivesTillDead = playerLivesTillDead - 1
+		if body.getPlayerHp() > 0 :
+			body.setPlayerHp(body.getPlayerHp() - 20) 
 			running = false
 			body.stopMoving()
-			body.bossDamageReceived()
-			$AnimatedSprite2D.play("Normal_Atack")
+			body.normalEnemiesDamageReceived()
+			$AnimatedSprite2D.play("Atack")
 			await ($AnimatedSprite2D.animation_finished)
 			body.continueMoving()
 			running = true
 		else: 
 			running = false
 			body.stopMoving()
-			$AnimatedSprite2D.play("Normal_Atack")
+			$AnimatedSprite2D.play("Atack")
 			await ($AnimatedSprite2D.animation_finished)
 			body.dead()
-			playerLivesTillDead = 1
 			$AnimatedSprite2D.play("Iddle")
 			running = true
 		
 		
 		
 		
+

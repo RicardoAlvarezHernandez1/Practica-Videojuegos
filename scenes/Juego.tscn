@@ -1,11 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbfv5kr1eul15"]
+[gd_scene load_steps=9 format=3 uid="uid://cbfv5kr1eul15"]
 
-[ext_resource type="PackedScene" uid="uid://cu1o63hhakcfr" path="res://scenes/mapa.tscn" id="2_4e51p"]
+[ext_resource type="PackedScene" path="res://scenes/mapa.tscn" id="2_4e51p"]
 [ext_resource type="PackedScene" uid="uid://bu2linxj0iqhb" path="res://scenes/Jugador.tscn" id="2_gg023"]
-[ext_resource type="PackedScene" uid="uid://fj8ygxmiglay" path="res://scenes/DefaultEnemy.tscn" id="3_mmup6"]
 [ext_resource type="PackedScene" uid="uid://cl351xwrlgpfg" path="res://scenes/MenuPausa.tscn" id="4_nf2bc"]
 [ext_resource type="AudioStream" uid="uid://kygbir3n487" path="res://assets/sounds/Silver For Monsters....mp3" id="5_lv2tk"]
 [ext_resource type="PackedScene" uid="uid://dc2yppn8pk7ru" path="res://scenes/spawner.tscn" id="5_yqrsg"]
+[ext_resource type="PackedScene" uid="uid://xwblaqr3jd43" path="res://scenes/Heart.tscn" id="7_0gtta"]
+[ext_resource type="PackedScene" uid="uid://bjkfic68af341" path="res://scenes/SpawnBoss.tscn" id="8_bd1ny"]
+
+[sub_resource type="GDScript" id="GDScript_fatvy"]
+script/source = "extends Node2D
+var boss = preload(\"res://scenes/DefaultEnemy.tscn\")
+var bool_spawn = true
+var rand = RandomNumberGenerator.new()
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+	
+
+
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group(\"Jugador\"):
+		if body.getKillCounterValue() >= 5:
+			if bool_spawn:
+				bool_spawn = false
+				var enemigo = boss.instantiate()
+				enemigo.position.y = 614.681
+				enemigo.position.x = 366.316
+				add_child(enemigo)
+"
 
 [node name="Juego" type="Node2D"]
 position = Vector2(577, 328)
@@ -14,10 +45,7 @@ scale = Vector2(1.1875, 1.1144)
 [node name="CanvasLayer" parent="." instance=ExtResource("4_nf2bc")]
 
 [node name="Node2D2" parent="." instance=ExtResource("2_4e51p")]
-
-[node name="DefaultEnemy" parent="." instance=ExtResource("3_mmup6")]
-position = Vector2(365.474, 619.167)
-scale = Vector2(1.1449, 1.10423)
+script = SubResource("GDScript_fatvy")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_gg023")]
 position = Vector2(-36.2105, -9.87079)
@@ -29,3 +57,37 @@ volume_db = -30.0
 autoplay = true
 
 [node name="Spawner" parent="." instance=ExtResource("5_yqrsg")]
+
+[node name="SpawnBoss" parent="." instance=ExtResource("8_bd1ny")]
+
+[node name="Node2D" parent="." instance=ExtResource("7_0gtta")]
+position = Vector2(268.632, -95.1184)
+scale = Vector2(0.369113, 0.343014)
+
+[node name="Node2D3" parent="." instance=ExtResource("7_0gtta")]
+position = Vector2(-762.947, 633.525)
+scale = Vector2(0.369, 0.369)
+
+[node name="Node2D4" parent="." instance=ExtResource("7_0gtta")]
+position = Vector2(789.895, -692.749)
+scale = Vector2(0.369, 0.343)
+
+[node name="Node2D5" parent="." instance=ExtResource("7_0gtta")]
+position = Vector2(-130.526, -675.7)
+scale = Vector2(0.369, 0.369)
+
+[node name="Node2D6" parent="." instance=ExtResource("7_0gtta")]
+position = Vector2(-885.053, 92.4264)
+scale = Vector2(0.369, 0.369)
+
+[node name="Node2D7" parent="." instance=ExtResource("7_0gtta")]
+position = Vector2(810.947, 412.778)
+scale = Vector2(0.369, 0.369)
+
+[node name="Node2D8" parent="." instance=ExtResource("7_0gtta")]
+position = Vector2(240.842, 484.566)
+scale = Vector2(0.369, 0.343)
+
+[node name="Node2D9" parent="." instance=ExtResource("7_0gtta")]
+position = Vector2(-825.263, -702.62)
+scale = Vector2(0.369, 0.343)

@@ -1,8 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://bu2linxj0iqhb"]
+[gd_scene load_steps=50 format=3 uid="uid://bu2linxj0iqhb"]
 
 [ext_resource type="Script" path="res://assets/scripts/Jugador.gd" id="1_4ouik"]
 [ext_resource type="Texture2D" uid="uid://c4xjn562t2k31" path="res://assets/sprites/player.png" id="2_m0bb1"]
 [ext_resource type="Texture2D" uid="uid://q016pfs8aijh" path="res://assets/sprites/armored_heart_8x8.png" id="3_sckqp"]
+[ext_resource type="FontFile" uid="uid://d4kkq8mo8asxf" path="res://assets/Text/Silkscreen-Regular.ttf" id="4_k7ivk"]
+[ext_resource type="Texture2D" uid="uid://c284tfoddnoh2" path="res://assets/sprites/Calavera_Pixel_Art.png" id="5_6lysr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4smyd"]
 radius = 6.52295
@@ -344,6 +346,9 @@ corner_radius_top_right = 13
 corner_radius_bottom_right = 13
 corner_radius_bottom_left = 13
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7krl8"]
+size = Vector2(120, 61.5)
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Jugador"]]
 script = ExtResource("1_4ouik")
 
@@ -356,14 +361,17 @@ shape = SubResource("CapsuleShape2D_4smyd")
 position = Vector2(2.84217e-14, 1.42109e-14)
 scale = Vector2(2.66667, 2.4375)
 sprite_frames = SubResource("SpriteFrames_si6f6")
-animation = &"Atack_Top"
+animation = &"Atack_Down"
+frame = 3
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2, 2)
+position = Vector2(-1, 1)
 limit_left = -639
 limit_top = -528
 limit_right = 1716
 limit_bottom = 1398
+limit_smoothed = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -376,11 +384,11 @@ disabled = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 z_index = 5
-offset_left = -7.0
-offset_top = -28.0
-offset_right = 241.0
-offset_bottom = -1.0
-scale = Vector2(0.278319, 0.60028)
+offset_left = -44.0
+offset_top = 49.0
+offset_right = 57.0
+offset_bottom = 69.0
+scale = Vector2(1.10415, 0.839988)
 theme_override_colors/font_color = Color(0, 0.596078, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_e84qd")
@@ -389,8 +397,32 @@ show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
-position = Vector2(-25, -19)
-scale = Vector2(2.25443, 1.995)
+position = Vector2(-58, 58)
+scale = Vector2(2.125, 1.97159)
 texture = ExtResource("3_sckqp")
 
+[node name="Label" type="Label" parent="."]
+z_index = 5
+offset_left = 1.0
+offset_top = -52.0
+offset_right = 244.0
+offset_bottom = -18.0
+scale = Vector2(1.08494, 1.61456)
+theme_override_fonts/font = ExtResource("4_k7ivk")
+theme_override_font_sizes/font_size = 24
+text = " : 0"
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_7krl8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(-18, -24)
+scale = Vector2(0.0428647, 0.0417164)
+texture = ExtResource("5_6lysr")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
