@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl351xwrlgpfg"]
+
+[ext_resource type="Script" path="res://assets/scripts/MenuPausa.gd" id="1_umc62"]
+[ext_resource type="AudioStream" uid="uid://w1y33vra7132" path="res://assets/sounds/90s-game-ui-6-185099.mp3" id="2_wmcpe"]
+[ext_resource type="FontFile" uid="uid://d4kkq8mo8asxf" path="res://assets/Text/Silkscreen-Regular.ttf" id="3_h4ybp"]
+[ext_resource type="AudioStream" uid="uid://bj4klx1658fqp" path="res://assets/sounds/Kaer Morhen.mp3" id="4_kkbi6"]
+
+[node name="CanvasLayer" type="CanvasLayer" groups=["pausa"]]
+process_mode = 3
+script = ExtResource("1_umc62")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.415686)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wmcpe")
+volume_db = -40.0
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -233.0
+offset_right = -49.0
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.03665, 2.52506)
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = -4
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/line_spacing = 13
+theme_override_fonts/font = ExtResource("3_h4ybp")
+text = "Pausa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -106.0
+offset_right = -32.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.56442, 1.93505)
+
+[node name="Continuar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h4ybp")
+text = "Continuar"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h4ybp")
+text = "Salir"
+
+[node name="MusicaMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kkbi6")
+volume_db = -25.0
+
+[connection signal="pressed" from="VBoxContainer/Continuar" to="." method="_on_continuar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

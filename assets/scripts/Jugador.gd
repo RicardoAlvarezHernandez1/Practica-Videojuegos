@@ -98,4 +98,5 @@ func _on_area_2d_body_entered(body):
 func dead():
 	$JugadorAnimado.play("Dead")
 	await ($JugadorAnimado.animation_finished)
+	get_tree().change_scene_to_file("res://scenes/gameOver.tscn")
 	queue_free()

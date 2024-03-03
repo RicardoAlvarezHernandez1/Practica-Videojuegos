@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bar6crrif2rdc"]
+[gd_scene load_steps=4 format=3 uid="uid://bar6crrif2rdc"]
 
 [ext_resource type="Script" path="res://assets/scripts/MenuBienvenida.gd" id="1_nkwd2"]
-[ext_resource type="Texture2D" uid="uid://b14nonsg2ip3e" path="res://assets/sprites/caveBackground.webp" id="2_khi60"]
+[ext_resource type="Texture2D" uid="uid://c8pmkuwrrfjob" path="res://assets/sprites/pantalalInicio.jpg" id="2_xvu1f"]
+[ext_resource type="AudioStream" uid="uid://duamdyr1aquux" path="res://assets/sounds/Dark Souls 3 OST - Main Menu Theme [High Quality] - GidrahMusic.mp3" id="3_qr0cy"]
 
 [node name="MenuBienvenida" type="Control"]
 layout_mode = 3
@@ -66,7 +67,10 @@ text = "Salir"
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(580, 329)
 scale = Vector2(1.17677, 1.11129)
-texture = ExtResource("2_khi60")
+texture = ExtResource("2_xvu1f")
+
+[node name="MusicaMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qr0cy")
 
 [connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

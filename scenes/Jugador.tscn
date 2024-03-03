@@ -359,6 +359,11 @@ sprite_frames = SubResource("SpriteFrames_si6f6")
 animation = &"Atack_Top"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2, 2)
+limit_left = -639
+limit_top = -528
+limit_right = 1716
+limit_bottom = 1398
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -370,10 +375,12 @@ shape = SubResource("RectangleShape2D_iyetx")
 disabled = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -367.0
-offset_top = -247.0
-offset_right = -119.0
-offset_bottom = -220.0
+z_index = 5
+offset_left = -7.0
+offset_top = -28.0
+offset_right = 241.0
+offset_bottom = -1.0
+scale = Vector2(0.278319, 0.60028)
 theme_override_colors/font_color = Color(0, 0.596078, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_e84qd")
@@ -381,8 +388,9 @@ value = 100.0
 show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-399, -233)
-scale = Vector2(4.45, 3.76136)
+z_index = 5
+position = Vector2(-25, -19)
+scale = Vector2(2.25443, 1.995)
 texture = ExtResource("3_sckqp")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

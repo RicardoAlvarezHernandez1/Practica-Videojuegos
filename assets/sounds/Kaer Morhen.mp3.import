@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bj4klx1658fqp"
+path="res://.godot/imported/Kaer Morhen.mp3-445cde54ba7971746ef4eee4b4cc0266.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Kaer Morhen.mp3"
+dest_files=["res://.godot/imported/Kaer Morhen.mp3-445cde54ba7971746ef4eee4b4cc0266.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

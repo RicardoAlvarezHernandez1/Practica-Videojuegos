@@ -1,19 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbfv5kr1eul15"]
+[gd_scene load_steps=7 format=3 uid="uid://cbfv5kr1eul15"]
 
-[ext_resource type="PackedScene" path="res://scenes/mapa.tscn" id="2_4e51p"]
+[ext_resource type="PackedScene" uid="uid://cu1o63hhakcfr" path="res://scenes/mapa.tscn" id="2_4e51p"]
 [ext_resource type="PackedScene" uid="uid://bu2linxj0iqhb" path="res://scenes/Jugador.tscn" id="2_gg023"]
-[ext_resource type="PackedScene" uid="uid://dvjnt6trven5b" path="res://scenes/DefaultEnemy.tscn" id="3_mmup6"]
+[ext_resource type="PackedScene" uid="uid://fj8ygxmiglay" path="res://scenes/DefaultEnemy.tscn" id="3_mmup6"]
+[ext_resource type="PackedScene" uid="uid://cl351xwrlgpfg" path="res://scenes/MenuPausa.tscn" id="4_nf2bc"]
+[ext_resource type="AudioStream" uid="uid://kygbir3n487" path="res://assets/sounds/Silver For Monsters....mp3" id="5_lv2tk"]
+[ext_resource type="PackedScene" uid="uid://dc2yppn8pk7ru" path="res://scenes/spawner.tscn" id="5_yqrsg"]
 
 [node name="Juego" type="Node2D"]
 position = Vector2(577, 328)
 scale = Vector2(1.1875, 1.1144)
 
+[node name="CanvasLayer" parent="." instance=ExtResource("4_nf2bc")]
+
 [node name="Node2D2" parent="." instance=ExtResource("2_4e51p")]
 
-[node name="DefaultEnemy" parent="Node2D2" instance=ExtResource("3_mmup6")]
-position = Vector2(-548.21, -212.67)
+[node name="DefaultEnemy" parent="." instance=ExtResource("3_mmup6")]
+position = Vector2(365.474, 619.167)
 scale = Vector2(1.1449, 1.10423)
 
-[node name="CharacterBody2D" parent="Node2D2" instance=ExtResource("2_gg023")]
-position = Vector2(-36.2105, -9.87078)
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_gg023")]
+position = Vector2(-36.2105, -9.87079)
 scale = Vector2(0.599375, 0.6169)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lv2tk")
+volume_db = -30.0
+autoplay = true
+
+[node name="Spawner" parent="." instance=ExtResource("5_yqrsg")]

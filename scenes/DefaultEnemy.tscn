@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dvjnt6trven5b"]
+[gd_scene load_steps=67 format=3 uid="uid://fj8ygxmiglay"]
 
 [ext_resource type="Script" path="res://assets/scripts/DefaultEnemy.gd" id="1_jefiu"]
 [ext_resource type="Texture2D" uid="uid://d30a7eb4u3ltb" path="res://assets/sprites/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="2_huj84"]
@@ -493,6 +493,7 @@ position = Vector2(2, 44)
 shape = SubResource("RectangleShape2D_7o4bc")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = 5
 offset_left = -74.0
 offset_top = -39.0
 offset_right = 82.0

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu2jk8csf133k"]
+
+[ext_resource type="AudioStream" uid="uid://w1y33vra7132" path="res://assets/sounds/90s-game-ui-6-185099.mp3" id="2_114ok"]
+[ext_resource type="Script" path="res://scenes/MenuPausa.gd" id="2_bdy52"]
+
+[node name="CanvasLayer" type="CanvasLayer" groups=["pausa"]]
+visible = false
+script = ExtResource("2_bdy52")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_114ok")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

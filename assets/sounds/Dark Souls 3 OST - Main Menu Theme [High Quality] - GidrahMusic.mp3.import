@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://duamdyr1aquux"
+path="res://.godot/imported/Dark Souls 3 OST - Main Menu Theme [High Quality] - GidrahMusic.mp3-d68b5ec025752dc3b108adbbded8b390.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Dark Souls 3 OST - Main Menu Theme [High Quality] - GidrahMusic.mp3"
+dest_files=["res://.godot/imported/Dark Souls 3 OST - Main Menu Theme [High Quality] - GidrahMusic.mp3-d68b5ec025752dc3b108adbbded8b390.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
